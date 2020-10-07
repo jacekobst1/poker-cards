@@ -5,11 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    deckId: null,
+    drawnCards: [],
   },
   mutations: {
   },
   actions: {
+    fetchNewDeck() {
+
+    }
   },
-  modules: {
-  }
 })
