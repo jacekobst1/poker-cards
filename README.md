@@ -1,4 +1,4 @@
-# deck-of-cards
+# poker-cards
 
 ## Project setup
 ```
