@@ -1,21 +1,52 @@
 <template>
   <div>
-    <v-btn x-large @click="fetchNewDeck()">
-      Weź nową talię
+    <v-btn
+        @click="shuffleDeckMethod()"
+        :loading="shuffleDeckLoading"
+        x-large
+        class="ma-3"
+    >
+      Przetasuj talię
     </v-btn>
-    <v-btn x-large class="ml-10">
-      Wylosuj 3 karty
+    <v-spacer />
+    <v-btn
+        v-if="cardsImages.length < 5"
+        @click="drawCardsMethod()"
+        :loading="drawCardsLoading"
+        x-large
+        class="ma-3"
+    >
+      <span v-if="!cardsImages.length">Wylosuj 3 karty</span>
+      <span v-else>Wylosuj kartę</span>
     </v-btn>
   </div>
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
     export default {
         name: 'Buttons',
+        data: () => ({
+           drawCardsLoading: false,
+           shuffleDeckLoading: false,
+        }),
+        computed: {
+            ...mapGetters({
+                deckId: 'getDeckId',
+                cardsImages: 'getDrawnCardsImages'
+            }),
+        },
         methods: {
-            ...mapActions(['fetchNewDeck'])
+            drawCardsMethod() {
+                this.drawCardsLoading = true;
+                const numberOfCards = this.cardsImages.length ? 1 : 3;
+                this.$store.dispatch('drawCards', numberOfCards).then(() => this.drawCardsLoading = false);
+            },
+            shuffleDeckMethod() {
+                this.shuffleDeckLoading = true;
+                this.$store.dispatch('shuffleDeck').then(() => this.shuffleDeckLoading = false);
+            }
         }
     }
 </script>

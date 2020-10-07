@@ -1,17 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import cards from '@/store/cards';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    deckId: null,
-    drawnCards: [],
-  },
-  mutations: {
-  },
-  actions: {
-    fetchNewDeck() {
+    modules: {
+        cards
     }
-  },
 })

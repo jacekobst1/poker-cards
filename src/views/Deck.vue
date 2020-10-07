@@ -8,9 +8,13 @@
 <script>
     import Buttons from '@/components/Buttons';
     import Cards from '@/components/Cards';
+
     export default {
         name: 'Deck',
         components: {Buttons, Cards},
+        created() {
+            this.$store.dispatch('fetchNewDeck');
+        }
     }
 </script>
 
