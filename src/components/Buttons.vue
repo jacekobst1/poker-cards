@@ -13,7 +13,7 @@
         @click="drawCardsMethod()"
         :loading="drawCardsLoading"
         x-large
-        :class="{'hidden': cardsImages.length >= 5, 'ma-3': true}"
+        :class="{'visibility-hidden': cardsImages.length >= 5, 'ma-3': true}"
     >
       <span v-if="!cardsImages.length">Wylosuj 3 karty</span>
       <span v-else>Wylosuj kartę</span>
@@ -50,8 +50,3 @@ import { mapGetters } from 'vuex';
     }
 </script>
 
-<style scoped>
-    .hidden {
-        visibility: hidden;
-    }
-</style>
