@@ -10,11 +10,10 @@
     </v-btn>
     <v-spacer />
     <v-btn
-        v-if="cardsImages.length < 5"
         @click="drawCardsMethod()"
         :loading="drawCardsLoading"
         x-large
-        class="ma-3"
+        :class="{'hidden': cardsImages.length >= 5, 'ma-3': true}"
     >
       <span v-if="!cardsImages.length">Wylosuj 3 karty</span>
       <span v-else>Wylosuj kartę</span>
@@ -50,3 +49,9 @@ import { mapGetters } from 'vuex';
         }
     }
 </script>
+
+<style scoped>
+    .hidden {
+        visibility: hidden;
+    }
+</style>

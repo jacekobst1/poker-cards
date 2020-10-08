@@ -32,6 +32,6 @@
 
 <style scoped>
     #cards-container {
-        height: 80vh;
+        height: 60vh;
     }
 </style>
